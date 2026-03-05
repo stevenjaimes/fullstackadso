@@ -1,0 +1,32 @@
+CREATE TABLE IF NOT EXISTS clientes (
+  id_cliente INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(120) NOT NULL,
+  telefono VARCHAR(30),
+  email VARCHAR(120),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS mascotas (
+  id_mascota INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  tipo VARCHAR(80) NOT NULL,
+  edad INT NOT NULL,
+  id_cliente INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_mascotas_cliente
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS citas (
+  id_cita INT AUTO_INCREMENT PRIMARY KEY,
+  id_mascota INT NOT NULL,
+  fecha DATE NOT NULL,
+  hora TIME NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_citas_mascota
+    FOREIGN KEY (id_mascota) REFERENCES mascotas(id_mascota)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);

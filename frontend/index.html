@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header>
+        <h1>Sistema de Gestion Veterinaria</h1>
+        <p>Conectado al backend real (MySQL + Express)</p>
+    </header>
+
+    <nav>
+        <a href="#duenos">Duenos</a>
+        <a href="#registro">Registro de mascota</a>
+        <a href="#lista">Mascotas registradas</a>
+        <a href="#citas">Citas</a>
+    </nav>
+
+    <main>
+        <section id="duenos" class="card">
+            <h2>Registrar dueno</h2>
+            <form id="formDueno">
+                <input type="text" id="nombreDueno" placeholder="Nombre del dueno" required>
+                <input type="text" id="telefonoDueno" placeholder="Telefono (opcional)">
+                <input type="email" id="emailDueno" placeholder="Email (opcional)">
+                <button type="submit">Registrar dueno</button>
+            </form>
+        </section>
+
+        <section id="registro" class="card">
+            <h2>Registrar mascota</h2>
+            <form id="formMascota">
+                <input type="text" id="nombreMascota" placeholder="Nombre de la mascota" required>
+                <input type="text" id="tipoAnimal" placeholder="Tipo de animal" required>
+                <input type="number" id="edad" min="0" placeholder="Edad" required>
+                <select id="idCliente" required>
+                    <option value="">Selecciona el dueno</option>
+                </select>
+                <button type="submit">Registrar mascota</button>
+            </form>
+        </section>
+
+        <section id="lista" class="card">
+            <h2>Mascotas registradas</h2>
+            <ul id="listaMascotas"></ul>
+        </section>
+
+        <section id="citas" class="card">
+            <h2>Asignar cita</h2>
+            <form id="formCita">
+                <select id="mascotaCita" required>
+                    <option value="">Selecciona una mascota registrada</option>
+                </select>
+                <input type="date" id="fecha" required>
+                <input type="time" id="hora" required>
+                <button type="submit">Guardar cita</button>
+            </form>
+
+            <ul id="listaCitas"></ul>
+        </section>
+    </main>
+
+    <p id="estado" class="estado"></p>
+
+    <footer>
+        <p>Software Veterinaria</p>
+    </footer>
+
+    <script src="app2.js"></script>
+</body>
+</html>
